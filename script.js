@@ -957,9 +957,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add some sample data if no members exist (for demo purposes)
     if (app.members.length === 0) {
         const sampleMembers = [
-            { id: '1', name: 'John Smith', role: 'Team Lead', dateAdded: new Date().toISOString() },
-            { id: '2', name: 'Sarah Johnson', role: 'Developer', dateAdded: new Date().toISOString() },
-            { id: '3', name: 'Mike Brown', role: 'Designer', dateAdded: new Date().toISOString() }
+            { id: '1', name: 'Vikas Soni', role: 'DDM DevOps Team', dateAdded: new Date().toISOString() },
+         
         ];
         
         app.members = sampleMembers;
@@ -990,3 +989,4 @@ document.addEventListener('keydown', (e) => {
         app.hideEditMemberModal();
     }
 });
+
