@@ -1,0 +1,41 @@
+# .gitignore for Team Attendance Tracker
+
+# Local server logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local backup files
+*_backup_*
+backup_*
+
+# Python cache (for server.py)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node modules (if using Node.js server)
+node_modules/
+npm-debug.log*
+
+# Local test files
+test_*
+localhost_test*

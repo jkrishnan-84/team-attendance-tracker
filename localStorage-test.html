@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>localStorage Test</title>
+</head>
+<body>
+    <h1>localStorage Test</h1>
+    <button onclick="testSave()">Test Save</button>
+    <button onclick="testLoad()">Test Load</button>
+    <div id="result"></div>
+
+    <script>
+        function testSave() {
+            try {
+                localStorage.setItem('testKey', 'testValue');
+                document.getElementById('result').innerHTML = 'Save successful!';
+                console.log('Data saved to localStorage');
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Save failed: ' + error.message;
+                console.error('Save error:', error);
+            }
+        }
+
+        function testLoad() {
+            try {
+                const value = localStorage.getItem('testKey');
+                document.getElementById('result').innerHTML = 'Loaded value: ' + (value || 'null');
+                console.log('Data loaded from localStorage:', value);
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Load failed: ' + error.message;
+                console.error('Load error:', error);
+            }
+        }
+
+        // Test on page load
+        window.onload = function() {
+            testSave();
+            setTimeout(() => testLoad(), 1000);
+        };
+    </script>
+</body>
+</html>

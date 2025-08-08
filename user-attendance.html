@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Attendance - User Access</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calendar-check"></i> Team Attendance</h1>
+            <div class="header-controls">
+                <button id="syncBtn" class="btn btn-warning">
+                    <i class="fas fa-sync"></i> Sync Data
+                </button>
+                <span class="user-mode">User Mode</span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="date-controls">
+                <label for="currentDate">Date:</label>
+                <input type="date" id="currentDate" class="date-input">
+                <button id="todayBtn" class="btn btn-secondary">Today</button>
+            </div>
+            <div class="stats">
+                <span class="stat">Total Members: <span id="totalMembers">0</span></span>
+                <span class="stat">Present Today: <span id="presentToday">0</span></span>
+                <span class="stat">Absent Today: <span id="absentToday">0</span></span>
+            </div>
+        </div>
+
+        <div class="attendance-table-container">
+            <table class="attendance-table" id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th class="member-header">Team Member</th>
+                        <th class="status-header">Status</th>
+                        <th class="time-header">Check-in Time</th>
+                        <th class="checkout-header">Check-out Time</th>
+                        <th class="notes-header">Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTableBody">
+                    <!-- Attendance rows will be dynamically generated -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="import-section">
+            <div class="import-controls">
+                <h3><i class="fas fa-upload"></i> Import Team Data</h3>
+                <p>Load team member list from admin (JSON file)</p>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+                <button id="importBtn" class="btn btn-primary">
+                    <i class="fas fa-file-import"></i> Import Team Data
+                </button>
+                <div id="importStatus" class="import-status"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="user-script.js"></script>
+</body>
+</html>

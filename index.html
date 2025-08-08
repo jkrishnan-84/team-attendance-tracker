@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Attendance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calendar-check"></i> Team Attendance Tracker</h1>
+            <div class="header-controls">
+                <button id="exportBtn" class="btn btn-success">
+                    <i class="fas fa-download"></i> Export Data
+                </button>
+                <button id="addMemberBtn" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Add Member
+                </button>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="date-controls">
+                <label for="currentDate">Date:</label>
+                <input type="date" id="currentDate" class="date-input">
+                <button id="todayBtn" class="btn btn-secondary">Today</button>
+            </div>
+            <div class="stats">
+                <span class="stat">Total Members: <span id="totalMembers">0</span></span>
+                <span class="stat">Present Today: <span id="presentToday">0</span></span>
+                <span class="stat">Absent Today: <span id="absentToday">0</span></span>
+            </div>
+        </div>
+
+        <div class="attendance-table-container">
+            <table class="attendance-table" id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th class="member-header">Team Member</th>
+                        <th class="status-header">Status</th>
+                        <th class="time-header">Check-in Time</th>
+                        <th class="checkout-header">Check-out Time</th>
+                        <th class="notes-header">Notes</th>
+                        <th class="actions-header">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTableBody">
+                    <!-- Attendance rows will be dynamically generated -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-section">
+            <h3>Monthly Summary</h3>
+            <div class="summary-table-container">
+                <table class="summary-table" id="summaryTable">
+                    <thead>
+                        <tr>
+                            <th>Team Member</th>
+                            <th>Present Days</th>
+                            <th>Absent Days</th>
+                            <th>Attendance %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summaryTableBody">
+                        <!-- Summary rows will be dynamically generated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Add Team Member</h2>
+                <span class="close" id="closeAddModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addMemberForm">
+                    <div class="form-group">
+                        <label for="memberName">Name:</label>
+                        <input type="text" id="memberName" required placeholder="Enter member name">
+                    </div>
+                    <div class="form-group">
+                        <label for="memberRole">Role:</label>
+                        <input type="text" id="memberRole" placeholder="Enter role (optional)">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Member</button>
+                        <button type="button" class="btn btn-secondary" id="cancelAddMember">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Member Modal -->
+    <div id="editMemberModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-edit"></i> Edit Team Member</h2>
+                <span class="close" id="closeEditModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editMemberForm">
+                    <input type="hidden" id="editMemberId">
+                    <div class="form-group">
+                        <label for="editMemberName">Name:</label>
+                        <input type="text" id="editMemberName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMemberRole">Role:</label>
+                        <input type="text" id="editMemberRole">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update Member</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditMember">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
